@@ -75,13 +75,13 @@ function ServiceDetail() {
           </div>
 
           <Block title="What's included">
-            {service.included.map((it, i) => (
+            {service.included.map((it: string, i: number) => (
               <Row key={i} icon={<CheckCircle2 className="size-4 text-primary" />} text={it} />
             ))}
           </Block>
 
           <Block title="Not included" muted>
-            {service.notIncluded.map((it, i) => (
+            {service.notIncluded.map((it: string, i: number) => (
               <Row key={i} icon={<XCircle className="size-4 text-destructive" />} text={it} />
             ))}
           </Block>

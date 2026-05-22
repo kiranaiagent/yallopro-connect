@@ -67,13 +67,15 @@ export const useCart = create<CartState>()(
   ),
 );
 
-export function cartLines(items: CartItem[]) {
+export type CartLine = { service: Service; qty: number; slot?: { date: string; time: string }; lineTotal: number };
+
+export function cartLines(items: CartItem[]): CartLine[] {
   return items
-    .map((i) => {
+    .map((i): CartLine | null => {
       const sv = services.find((s) => s.id === i.serviceId);
-      return sv ? { service: sv as Service, qty: i.qty, slot: i.slot, lineTotal: sv.price * i.qty } : null;
+      return sv ? { service: sv, qty: i.qty, slot: i.slot, lineTotal: sv.price * i.qty } : null;
     })
-    .filter((x): x is { service: Service; qty: number; slot?: { date: string; time: string }; lineTotal: number } => !!x);
+    .filter((x): x is CartLine => !!x);
 }
 
 export function cartTotals(items: CartItem[], promo?: string | null) {
