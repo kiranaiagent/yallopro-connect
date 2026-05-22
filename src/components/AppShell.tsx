@@ -7,12 +7,12 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   const { count } = cartTotals(items);
   const path = useRouterState({ select: (s) => s.location.pathname });
 
-  const tabs = [
+  const tabs: Array<{ to: "/home" | "/categories" | "/cart" | "/profile"; icon: typeof Home; label: string; badge?: number }> = [
     { to: "/home", icon: Home, label: "Home" },
     { to: "/categories", icon: LayoutGrid, label: "Browse" },
     { to: "/cart", icon: ShoppingBag, label: "Cart", badge: count },
     { to: "/profile", icon: User, label: "Me" },
-  ] as const;
+  ];
 
   return (
     <div className="min-h-dvh bg-background text-foreground flex justify-center">
