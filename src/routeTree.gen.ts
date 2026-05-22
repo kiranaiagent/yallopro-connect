@@ -9,38 +9,161 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as HomeRouteImport } from './routes/home'
+import { Route as CategoriesRouteImport } from './routes/categories'
+import { Route as CartRouteImport } from './routes/cart'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ServicesCategoryIdRouteImport } from './routes/services.$categoryId'
+import { Route as BookingConfirmationRouteImport } from './routes/booking.confirmation'
+import { Route as BookingBookingIdRouteImport } from './routes/booking.$bookingId'
 
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HomeRoute = HomeRouteImport.update({
+  id: '/home',
+  path: '/home',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CategoriesRoute = CategoriesRouteImport.update({
+  id: '/categories',
+  path: '/categories',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CartRoute = CartRouteImport.update({
+  id: '/cart',
+  path: '/cart',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesCategoryIdRoute = ServicesCategoryIdRouteImport.update({
+  id: '/services/$categoryId',
+  path: '/services/$categoryId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BookingConfirmationRoute = BookingConfirmationRouteImport.update({
+  id: '/booking/confirmation',
+  path: '/booking/confirmation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BookingBookingIdRoute = BookingBookingIdRouteImport.update({
+  id: '/booking/$bookingId',
+  path: '/booking/$bookingId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/cart': typeof CartRoute
+  '/categories': typeof CategoriesRoute
+  '/home': typeof HomeRoute
+  '/profile': typeof ProfileRoute
+  '/booking/$bookingId': typeof BookingBookingIdRoute
+  '/booking/confirmation': typeof BookingConfirmationRoute
+  '/services/$categoryId': typeof ServicesCategoryIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/cart': typeof CartRoute
+  '/categories': typeof CategoriesRoute
+  '/home': typeof HomeRoute
+  '/profile': typeof ProfileRoute
+  '/booking/$bookingId': typeof BookingBookingIdRoute
+  '/booking/confirmation': typeof BookingConfirmationRoute
+  '/services/$categoryId': typeof ServicesCategoryIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/cart': typeof CartRoute
+  '/categories': typeof CategoriesRoute
+  '/home': typeof HomeRoute
+  '/profile': typeof ProfileRoute
+  '/booking/$bookingId': typeof BookingBookingIdRoute
+  '/booking/confirmation': typeof BookingConfirmationRoute
+  '/services/$categoryId': typeof ServicesCategoryIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/cart'
+    | '/categories'
+    | '/home'
+    | '/profile'
+    | '/booking/$bookingId'
+    | '/booking/confirmation'
+    | '/services/$categoryId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/cart'
+    | '/categories'
+    | '/home'
+    | '/profile'
+    | '/booking/$bookingId'
+    | '/booking/confirmation'
+    | '/services/$categoryId'
+  id:
+    | '__root__'
+    | '/'
+    | '/cart'
+    | '/categories'
+    | '/home'
+    | '/profile'
+    | '/booking/$bookingId'
+    | '/booking/confirmation'
+    | '/services/$categoryId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CartRoute: typeof CartRoute
+  CategoriesRoute: typeof CategoriesRoute
+  HomeRoute: typeof HomeRoute
+  ProfileRoute: typeof ProfileRoute
+  BookingBookingIdRoute: typeof BookingBookingIdRoute
+  BookingConfirmationRoute: typeof BookingConfirmationRoute
+  ServicesCategoryIdRoute: typeof ServicesCategoryIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/home': {
+      id: '/home'
+      path: '/home'
+      fullPath: '/home'
+      preLoaderRoute: typeof HomeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/categories': {
+      id: '/categories'
+      path: '/categories'
+      fullPath: '/categories'
+      preLoaderRoute: typeof CategoriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cart': {
+      id: '/cart'
+      path: '/cart'
+      fullPath: '/cart'
+      preLoaderRoute: typeof CartRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,22 +171,40 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/$categoryId': {
+      id: '/services/$categoryId'
+      path: '/services/$categoryId'
+      fullPath: '/services/$categoryId'
+      preLoaderRoute: typeof ServicesCategoryIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/booking/confirmation': {
+      id: '/booking/confirmation'
+      path: '/booking/confirmation'
+      fullPath: '/booking/confirmation'
+      preLoaderRoute: typeof BookingConfirmationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/booking/$bookingId': {
+      id: '/booking/$bookingId'
+      path: '/booking/$bookingId'
+      fullPath: '/booking/$bookingId'
+      preLoaderRoute: typeof BookingBookingIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CartRoute: CartRoute,
+  CategoriesRoute: CategoriesRoute,
+  HomeRoute: HomeRoute,
+  ProfileRoute: ProfileRoute,
+  BookingBookingIdRoute: BookingBookingIdRoute,
+  BookingConfirmationRoute: BookingConfirmationRoute,
+  ServicesCategoryIdRoute: ServicesCategoryIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
