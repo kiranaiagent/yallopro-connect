@@ -9,18 +9,50 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ReviewRouteImport } from './routes/review'
 import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as OtpRouteImport } from './routes/otp'
+import { Route as NotificationsRouteImport } from './routes/notifications'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as LocationRouteImport } from './routes/location'
 import { Route as HomeRouteImport } from './routes/home'
 import { Route as CategoriesRouteImport } from './routes/categories'
 import { Route as CartRouteImport } from './routes/cart'
+import { Route as BookingsRouteImport } from './routes/bookings'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesCategoryIdRouteImport } from './routes/services.$categoryId'
+import { Route as ServiceServiceIdRouteImport } from './routes/service.$serviceId'
 import { Route as BookingConfirmationRouteImport } from './routes/booking.confirmation'
 import { Route as BookingBookingIdRouteImport } from './routes/booking.$bookingId'
 
+const ReviewRoute = ReviewRouteImport.update({
+  id: '/review',
+  path: '/review',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProfileRoute = ProfileRouteImport.update({
   id: '/profile',
   path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OtpRoute = OtpRouteImport.update({
+  id: '/otp',
+  path: '/otp',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotificationsRoute = NotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocationRoute = LocationRouteImport.update({
+  id: '/location',
+  path: '/location',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HomeRoute = HomeRouteImport.update({
@@ -38,6 +70,11 @@ const CartRoute = CartRouteImport.update({
   path: '/cart',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BookingsRoute = BookingsRouteImport.update({
+  id: '/bookings',
+  path: '/bookings',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -46,6 +83,11 @@ const IndexRoute = IndexRouteImport.update({
 const ServicesCategoryIdRoute = ServicesCategoryIdRouteImport.update({
   id: '/services/$categoryId',
   path: '/services/$categoryId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServiceServiceIdRoute = ServiceServiceIdRouteImport.update({
+  id: '/service/$serviceId',
+  path: '/service/$serviceId',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BookingConfirmationRoute = BookingConfirmationRouteImport.update({
@@ -61,86 +103,170 @@ const BookingBookingIdRoute = BookingBookingIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/bookings': typeof BookingsRoute
   '/cart': typeof CartRoute
   '/categories': typeof CategoriesRoute
   '/home': typeof HomeRoute
+  '/location': typeof LocationRoute
+  '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
+  '/otp': typeof OtpRoute
   '/profile': typeof ProfileRoute
+  '/review': typeof ReviewRoute
   '/booking/$bookingId': typeof BookingBookingIdRoute
   '/booking/confirmation': typeof BookingConfirmationRoute
+  '/service/$serviceId': typeof ServiceServiceIdRoute
   '/services/$categoryId': typeof ServicesCategoryIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/bookings': typeof BookingsRoute
   '/cart': typeof CartRoute
   '/categories': typeof CategoriesRoute
   '/home': typeof HomeRoute
+  '/location': typeof LocationRoute
+  '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
+  '/otp': typeof OtpRoute
   '/profile': typeof ProfileRoute
+  '/review': typeof ReviewRoute
   '/booking/$bookingId': typeof BookingBookingIdRoute
   '/booking/confirmation': typeof BookingConfirmationRoute
+  '/service/$serviceId': typeof ServiceServiceIdRoute
   '/services/$categoryId': typeof ServicesCategoryIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/bookings': typeof BookingsRoute
   '/cart': typeof CartRoute
   '/categories': typeof CategoriesRoute
   '/home': typeof HomeRoute
+  '/location': typeof LocationRoute
+  '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
+  '/otp': typeof OtpRoute
   '/profile': typeof ProfileRoute
+  '/review': typeof ReviewRoute
   '/booking/$bookingId': typeof BookingBookingIdRoute
   '/booking/confirmation': typeof BookingConfirmationRoute
+  '/service/$serviceId': typeof ServiceServiceIdRoute
   '/services/$categoryId': typeof ServicesCategoryIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/bookings'
     | '/cart'
     | '/categories'
     | '/home'
+    | '/location'
+    | '/login'
+    | '/notifications'
+    | '/otp'
     | '/profile'
+    | '/review'
     | '/booking/$bookingId'
     | '/booking/confirmation'
+    | '/service/$serviceId'
     | '/services/$categoryId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/bookings'
     | '/cart'
     | '/categories'
     | '/home'
+    | '/location'
+    | '/login'
+    | '/notifications'
+    | '/otp'
     | '/profile'
+    | '/review'
     | '/booking/$bookingId'
     | '/booking/confirmation'
+    | '/service/$serviceId'
     | '/services/$categoryId'
   id:
     | '__root__'
     | '/'
+    | '/bookings'
     | '/cart'
     | '/categories'
     | '/home'
+    | '/location'
+    | '/login'
+    | '/notifications'
+    | '/otp'
     | '/profile'
+    | '/review'
     | '/booking/$bookingId'
     | '/booking/confirmation'
+    | '/service/$serviceId'
     | '/services/$categoryId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BookingsRoute: typeof BookingsRoute
   CartRoute: typeof CartRoute
   CategoriesRoute: typeof CategoriesRoute
   HomeRoute: typeof HomeRoute
+  LocationRoute: typeof LocationRoute
+  LoginRoute: typeof LoginRoute
+  NotificationsRoute: typeof NotificationsRoute
+  OtpRoute: typeof OtpRoute
   ProfileRoute: typeof ProfileRoute
+  ReviewRoute: typeof ReviewRoute
   BookingBookingIdRoute: typeof BookingBookingIdRoute
   BookingConfirmationRoute: typeof BookingConfirmationRoute
+  ServiceServiceIdRoute: typeof ServiceServiceIdRoute
   ServicesCategoryIdRoute: typeof ServicesCategoryIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/review': {
+      id: '/review'
+      path: '/review'
+      fullPath: '/review'
+      preLoaderRoute: typeof ReviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/profile': {
       id: '/profile'
       path: '/profile'
       fullPath: '/profile'
       preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/otp': {
+      id: '/otp'
+      path: '/otp'
+      fullPath: '/otp'
+      preLoaderRoute: typeof OtpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notifications': {
+      id: '/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/location': {
+      id: '/location'
+      path: '/location'
+      fullPath: '/location'
+      preLoaderRoute: typeof LocationRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/home': {
@@ -164,6 +290,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CartRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/bookings': {
+      id: '/bookings'
+      path: '/bookings'
+      fullPath: '/bookings'
+      preLoaderRoute: typeof BookingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -176,6 +309,13 @@ declare module '@tanstack/react-router' {
       path: '/services/$categoryId'
       fullPath: '/services/$categoryId'
       preLoaderRoute: typeof ServicesCategoryIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/service/$serviceId': {
+      id: '/service/$serviceId'
+      path: '/service/$serviceId'
+      fullPath: '/service/$serviceId'
+      preLoaderRoute: typeof ServiceServiceIdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/booking/confirmation': {
@@ -197,14 +337,31 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BookingsRoute: BookingsRoute,
   CartRoute: CartRoute,
   CategoriesRoute: CategoriesRoute,
   HomeRoute: HomeRoute,
+  LocationRoute: LocationRoute,
+  LoginRoute: LoginRoute,
+  NotificationsRoute: NotificationsRoute,
+  OtpRoute: OtpRoute,
   ProfileRoute: ProfileRoute,
+  ReviewRoute: ReviewRoute,
   BookingBookingIdRoute: BookingBookingIdRoute,
   BookingConfirmationRoute: BookingConfirmationRoute,
+  ServiceServiceIdRoute: ServiceServiceIdRoute,
   ServicesCategoryIdRoute: ServicesCategoryIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
