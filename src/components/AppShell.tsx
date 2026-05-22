@@ -15,13 +15,13 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   ];
 
   return (
-    <div className="min-h-dvh bg-background text-foreground flex justify-center">
-      <div className="w-full max-w-[440px] min-h-dvh relative pb-24 border-x border-border/40">
+    <div className="min-h-dvh text-foreground flex justify-center">
+      <div className="w-full max-w-[440px] min-h-dvh relative pb-24 border-x border-white/30">
         {/* top status strip */}
-        <div className="sticky top-0 z-30 backdrop-blur bg-background/80 border-b border-border/40">
+        <div className="sticky top-0 z-30 glass border-b border-white/40">
           <div className="flex items-center justify-between px-5 py-3">
             <Link to="/home" className="flex items-center gap-2">
-              <div className="size-8 rounded-xl gold-gradient grid place-items-center text-primary-foreground font-bold">Y</div>
+              <div className="size-8 rounded-xl gold-gradient grid place-items-center text-primary-foreground font-bold shadow-[var(--shadow-glow)]">Y</div>
               <span className="font-bold tracking-tight">YallO</span>
             </Link>
             <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
@@ -35,7 +35,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
 
         {/* bottom nav */}
         <nav className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[440px] z-40">
-          <div className="mx-3 mb-3 rounded-2xl bg-card/95 backdrop-blur border border-border shadow-[var(--shadow-card)] grid grid-cols-4">
+          <div className="mx-3 mb-3 rounded-2xl glass-strong grid grid-cols-4">
             {tabs.map((t) => {
               const Icon = t.icon;
               const active = path === t.to || (t.to === "/home" && path === "/home");
