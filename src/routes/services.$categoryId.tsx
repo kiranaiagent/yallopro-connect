@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, Plus, Minus, Star, ShoppingBag } from "lucide-react";
 import { AppShell } from "@/components/AppShell";
-import { categoryById, servicesByCategory, inr } from "@/lib/yallo-data";
+import { categoryById, servicesByCategory, inr, type Service } from "@/lib/yallo-data";
 import { useCart, cartTotals } from "@/lib/cart-store";
 
 export const Route = createFileRoute("/services/$categoryId")({
@@ -57,7 +57,7 @@ function ServicesPage() {
         </div>
 
         <div className="mt-6 space-y-3">
-          {services.map((s) => {
+          {services.map((s: Service) => {
             const q = qtyOf(s.id);
             return (
               <div key={s.id} className="rounded-2xl border border-border bg-card p-4">
